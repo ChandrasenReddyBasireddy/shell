@@ -35,8 +35,15 @@ function list_users_with_read_access {
         echo "$collaborators"
     fi
 }
-
+function helper {
+ declare -i nx=2
+ if [ $# -ne $nx ]; then
+         echo "please pass the expected input arguments like shown below"
+         echo "./filename.sh username password"
+         exit
+fi
+}
 # Main script
-
 echo "Listing users with read access to ${REPO_OWNER}/${REPO_NAME}..."
+helper
 list_users_with_read_access
